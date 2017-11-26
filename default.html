@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Sınavım.com - Sınava hazırlığın adresi..</title>
+
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+      <nav class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Sınavım.com</a>
+        <a class="btn btn-primary" href="default.html">Soru Sor</a>
+      </div>
+    </nav>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h1>Kayıt Ekle</h1>
+        <label>Kullanıcı Adı</label>
+        <input type="text" id="txtAdsoyad" class="form-control">
+        <label>E-Posta</label>
+        <input type="text" id="txtMail" class="form-control">
+        <label>Sorunuz</label>
+        <input type="text" id="txtYas" class="form-control">
+        <br>
+        <button id="btnKaydet" class="btn btn-primary">Kaydet</button>
+        <hr>
+        <div id="sonuc"></div>
+
+      </div>
+      <div class="col-md-8">
+        <h1>Kayıtlar</h1>
+        <table class="table table-hover" id="tbKayitlar">
+          <tr class="bg-info">
+
+            <td>Kullanıcı Adı</td>
+            <td>E-Posta</td>
+            <td>Sorunuz</td>
+            <td>Sil</td>
+            <td>Değiştir</td>
+            <td>Yorum Yap</td>
+          </tr>
+          <tr>
+
+            <td>Ali</td>
+            <td>ali@mail.com</td>
+            <td>20</td>
+            <td>
+              <button class="btn btn-danger sil">Sil</button>
+            </td>
+            <td>
+              <button class="btn btn-primary ">Değiştir</button>
+            </td>
+            <td>
+              <button class="btn btn-warning ">Cevapla</button>
+            </td>
+          </tr>
+         
+        </table>
+      </div>
+    </div>
+  </div>
+   
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>
+    $(function () {
+      $("#btnKaydet").click(function () {
+        var adsoyad = $("#txtAdsoyad").val();
+        var mail = $("#txtMail").val();
+        var yas = $("#txtYas").val();
+        if (adsoyad == "" || mail == "" || yas == "") {
+          $("#sonuc").fadeIn(1000);
+          $("#sonuc").html("Lütfen Tüm Alanları Doldurunuz!");
+          $("#sonuc").removeClass();
+          $("#sonuc").addClass("alert alert-danger");
+          $("#sonuc").fadeOut(3000);
+          return false;
+        }
+        $("#tbKayitlar").append("<tr><td>" + adsoyad + "</td><td>" + mail + "</td><td>" + yas + "</td><td><button class='btn btn-danger sil'>Sil</button></td><td><button class='btn btn-primary sil'>Değiştir</button></td><td><button class='btn btn-warning sil'>Cevapla</button></td></tr>");
+      });
+      $(document).on("click", ".sil", function () {
+        var satir = $(this).closest("tr");
+        satir.remove();
+      });
+    });
+  </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </body>
+</html>
